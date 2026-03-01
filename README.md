@@ -1,6 +1,6 @@
 # TrackingBacon
 
-TrackingBacon monitors newly emerging products that combine **Roleplay AI + Language Learning**.
+TrackingBacon monitors newly emerging products
 
 It supports global coverage including:
 - China-focused channels
