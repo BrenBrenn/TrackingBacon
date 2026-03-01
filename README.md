@@ -1,6 +1,6 @@
 # TrackingBacon
 
-TrackingBacon monitors newly emerging products
+TrackingBacon monitors newly emerging products that combine **Roleplay AI + Language Learning**.
 
 It supports global coverage including:
 - China-focused channels
@@ -34,12 +34,25 @@ Examples:
 
 ### 1) Start the service
 
+**macOS / Linux (bash)**
+
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install fastapi uvicorn pytest
+pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
+
+**Windows (PowerShell)**
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+If you see `-m: The term '-m' is not recognized`, it means the `python` (or `py`) executable was omitted. Use `py -m venv .venv` instead of just `-m venv .venv`.
 
 ### 2) Check health
 
