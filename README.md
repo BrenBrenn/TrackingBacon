@@ -32,6 +32,14 @@ Examples:
 
 ## How to Use
 
+### 0) Open the homepage
+
+```bash
+curl http://127.0.0.1:8000/
+```
+
+This endpoint returns a quick-start payload (`status`, `message`, and endpoint map), so browser visits to `/` are informative instead of returning 404.
+
 ### 1) Start the service
 
 **macOS / Linux (bash)**
@@ -53,6 +61,24 @@ uvicorn app.main:app --reload
 ```
 
 If you see `-m: The term '-m' is not recognized`, it means the `python` (or `py`) executable was omitted. Use `py -m venv .venv` instead of just `-m venv .venv`.
+
+
+### Windows Troubleshooting (PowerShell)
+
+If PowerShell shows:
+- `The term '/c:/.../python.exe' is not recognized`
+
+Use one of these valid PowerShell forms (note the `&` call operator and Windows-style path):
+
+```powershell
+# Recommended (inside activated venv)
+python -m pip install -r requirements.txt
+
+# Or explicitly call another venv Python
+& "C:\Users\anrbr\Desktop\TrackingBacon\.venv-1\Scripts\python.exe" -m pip install -r requirements.txt
+```
+
+Do **not** use Git-Bash-style `/c:/...` path syntax directly in PowerShell.
 
 ### 2) Check health
 
@@ -79,6 +105,29 @@ curl http://127.0.0.1:8000/products
 ```
 
 Tip: to verify CN detection, check product items where `region` is `china`.
+
+
+### pip Upgrade Notice
+
+If you see this message:
+
+```text
+[notice] A new release of pip is available
+```
+
+You can ignore it for this project setup. It is optional.
+
+If you still want to upgrade:
+
+```bash
+python -m pip install --upgrade pip
+```
+
+On Windows PowerShell, you can also run:
+
+```powershell
+py -m pip install --upgrade pip
+```
 
 ## Project Structure
 

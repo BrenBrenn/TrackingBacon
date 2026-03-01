@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 
 from app.config import REGIONAL_SOURCES, REGIONAL_SIZZLE_SIGNALS
 from app.repository import init_db, list_products
@@ -12,6 +12,27 @@ app = FastAPI(title="TrackingBacon", version="0.1.0")
 @app.on_event("startup")
 def startup() -> None:
     init_db()
+
+
+@app.get("/")
+def root() -> dict:
+    return {
+        "service": "TrackingBacon",
+        "status": "ok",
+        "message": "Service is running. Use the endpoints below to run sniffer and inspect results.",
+        "endpoints": {
+            "docs": "/docs",
+            "health": "/health",
+            "plan": "/plan",
+            "run_sniffer": "POST /sniffer/run",
+            "products": "/products?limit=100",
+        },
+    }
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon() -> Response:
+    return Response(status_code=204)
 
 
 @app.get("/health")
