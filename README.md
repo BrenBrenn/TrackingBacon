@@ -38,7 +38,7 @@ Examples:
 curl http://127.0.0.1:8000/
 ```
 
-This endpoint returns service metadata (so browser visits to `/` no longer return 404).
+This endpoint returns a quick-start payload (`status`, `message`, and endpoint map), so browser visits to `/` are informative instead of returning 404.
 
 ### 1) Start the service
 

@@ -18,9 +18,15 @@ def startup() -> None:
 def root() -> dict:
     return {
         "service": "TrackingBacon",
-        "docs": "/docs",
-        "health": "/health",
-        "plan": "/plan",
+        "status": "ok",
+        "message": "Service is running. Use the endpoints below to run sniffer and inspect results.",
+        "endpoints": {
+            "docs": "/docs",
+            "health": "/health",
+            "plan": "/plan",
+            "run_sniffer": "POST /sniffer/run",
+            "products": "/products?limit=100",
+        },
     }
 
 
