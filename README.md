@@ -28,33 +28,11 @@ Examples:
 - Japan/Korea: Shorts/TikTok-driven UGC surge
 - Europe: GDPR + education partnership milestone
 - Global OSS: GitHub stars spike (+1000 / 24h)
+- China (CN): signals from `zhihu`, `juejin`, `wechat` / `weixin` / `mp.weixin`, `xiaohongshu`, `bilibili`, `36kr`, `中国`, `中文`, and `cn`
 
-## Why this update (vs China-only setup)
+## How to Use
 
-This version expands the strategy into a **global matrix** so you can avoid blind spots:
-
-1. **North America** catches earliest technical launches.
-2. **Japan/Korea** catches roleplay-native consumer behavior.
-3. **Europe** catches compliance-first education rollouts.
-4. **Global OSS** catches foundational framework shifts.
-
-
-## China (CN) Coverage
-
-Yes — CN detection is supported.
-
-Current CN detection signals include:
-- Region hint from connector: `china`
-- Keyword/domain heuristics: `zhihu`, `juejin`, `wechat`, `weixin`, `mp.weixin`, `xiaohongshu`, `bilibili`, `36kr`, `中国`, `中文`, and `cn`
-
-How to verify quickly:
-1. Call `POST /sniffer/run`
-2. Call `GET /products`
-3. Check items where `region` equals `china`
-
-> Note: current ingestion uses a mock connector. Real CN source connectors should be added next (e.g., Zhihu/Juejin/WeChat/Gitee feeds) to improve recall.
-
-## Quick Start
+### 1) Start the service
 
 ```bash
 python -m venv .venv
@@ -63,23 +41,31 @@ pip install fastapi uvicorn pytest
 uvicorn app.main:app --reload
 ```
 
-Run one sniffer cycle:
+### 2) Check health
+
+```bash
+curl http://127.0.0.1:8000/health
+```
+
+### 3) View the monitoring plan
+
+```bash
+curl http://127.0.0.1:8000/plan
+```
+
+### 4) Run one Sniffer cycle
 
 ```bash
 curl -X POST http://127.0.0.1:8000/sniffer/run
 ```
 
-Inspect current product records:
+### 5) Inspect detected products
 
 ```bash
 curl http://127.0.0.1:8000/products
 ```
 
-Check the global monitoring plan:
-
-```bash
-curl http://127.0.0.1:8000/plan
-```
+Tip: to verify CN detection, check product items where `region` is `china`.
 
 ## Project Structure
 
