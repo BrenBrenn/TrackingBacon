@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/
+trackingbacon.db
+
+docs/GLOBAL_PLAN.md
