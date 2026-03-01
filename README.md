@@ -38,7 +38,7 @@ Examples:
 curl http://127.0.0.1:8000/
 ```
 
-This endpoint returns a quick-start payload (`status`, `message`, and endpoint map), so browser visits to `/` are informative instead of returning 404.
+This endpoint now renders a human-friendly landing page with direct links to docs, health, plan, and products.
 
 ### 1) Start the service
 
